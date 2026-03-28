@@ -918,11 +918,31 @@ function dayTotals(d) {
 }
 
 function saveDay() {
+  // Ensure benzina 80 and 92 values are captured correctly before saving
+  const s1_80_l_el = document.getElementById('s1_80_l');
+  const s1_80_r_el = document.getElementById('s1_80_r');
+  const s1_92_l_el = document.getElementById('s1_92_l');
+  const s1_92_r_el = document.getElementById('s1_92_r');
+  const s2_80_l_el = document.getElementById('s2_80_l');
+  const s2_80_r_el = document.getElementById('s2_80_r');
+  const s2_92_l_el = document.getElementById('s2_92_l');
+  const s2_92_r_el = document.getElementById('s2_92_r');
+  
+  // Force read the current values
+  if (s1_80_l_el) s1_80_l_el.value = s1_80_l_el.value;
+  if (s1_80_r_el) s1_80_r_el.value = s1_80_r_el.value;
+  if (s1_92_l_el) s1_92_l_el.value = s1_92_l_el.value;
+  if (s1_92_r_el) s1_92_r_el.value = s1_92_r_el.value;
+  if (s2_80_l_el) s2_80_l_el.value = s2_80_l_el.value;
+  if (s2_80_r_el) s2_80_r_el.value = s2_80_r_el.value;
+  if (s2_92_l_el) s2_92_l_el.value = s2_92_l_el.value;
+  if (s2_92_r_el) s2_92_r_el.value = s2_92_r_el.value;
+  
   db[curDate] = buildDayObj();
   saveDB();
   renderDailySummary();
   toast('✓ تم حفظ بيانات اليوم');
-}
+  }
 
 function loadDay() {
   const d = db[curDate];
